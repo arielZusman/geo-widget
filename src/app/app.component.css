@@ -1,0 +1,9 @@
+:host {
+  width: 800px;
+  display: block;
+}
+
+.widget-form {
+  display: flex;
+  justify-content: space-around;
+}

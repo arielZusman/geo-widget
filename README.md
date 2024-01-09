@@ -1,27 +1,39 @@
-# CityshobWidget
+# Questions and Requirements:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+**Q:** What plugins or extensions are best suited in the Angular + PrimeNG environment to achieve the goal and implement all functions? Provide a list or explain why additional plugins are not needed.
 
-## Development server
+**A:** For the widget main functions we don't need anything more then PrimeNG.
+We can use the Tree component which enables filtering and drag & drop of the tree nodes.
+For resizing we can just use css `resize` property.
+I couldn't find the icons used in PrimeNG icon library, so for that will need to use something else like fontawesome
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+**Q:** In what format should data be received to display the result?
 
-## Code scaffolding
+**A:** The data should be an array of `TreeNode`.
+The main properties we need are `label` , `key` and `children`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Q:** How to request data for displaying the result (format)?
 
-## Build
+**A:** This really depends on the size of the data and how its stored in the database.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. For small amount of data we can get all the data in one request and preform the filter and search on the client
 
-## Running unit tests
+`http.get('https://example.com/api/geo-objects)`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. For large amount of data we will need to lazy load the children when the user clicks on a node. We will need to send the node ID and the search and filter.
 
-## Running end-to-end tests
+`http.get('https://example.com/api/geo-object?id=659ba88faefd802c84e1e083&search=sensor2&filter=zones`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Another thing is to consider is how the data is stored in the database. Is it stored as embed documents or using references.
 
-## Further help
+**Q:** How to implement multilingual support for types and names, and what is the
+best way to do it?
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**A:** We need to install the `@angular/localize` package.
+Mark the text for translation and show language select menu.
+
+**Q:** What to do if the server cannot return the desired format and is forced to
+return bulky objects with fields in different writing styles?
+
+**A:** We need to implement some kind of adapter function which transforms ths server response
+

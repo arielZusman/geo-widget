@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {FormControl} from "@angular/forms";
+import {combineLatest, map, startWith, switchMap, tap} from "rxjs";
+import {GeoService} from "./geo.service";
+import {geoTreeNodeAdapter} from "./utils";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cityshob-widget';
+  private geoService = inject(GeoService)
+
+  readonly filters = [
+    {label: 'Zones', value: 1},
+    {label: 'Sites', value: 0},
+    {label: 'Placemarks', value: 4},
+    {label: 'Layers', value: 3},
+  ]
+
+  filter = new FormControl(this.filters.map(filter => filter.value))
+  search = new FormControl('')
+
+  filter$ = this.filter.valueChanges.pipe(startWith(this.filter.value))
+  search$ = this.search.valueChanges.pipe(startWith(this.search.value))
+
+
+  result$ = combineLatest([this.filter$, this.search$]).pipe(
+    switchMap(([filter, search]) => {
+      return this.geoService.find(filter!, search!)
+    }),
+    map(geoObjects => geoObjects.map(geoObject => geoTreeNodeAdapter(geoObject))),
+    tap(console.log)
+  )
 }
