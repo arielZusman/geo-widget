@@ -1,0 +1,9 @@
+{
+  "locale": "es-ES",
+  "translations": {
+    "type_zone": "Zonas",
+    "type_sites": "Sitios",
+    "type_placemark": "Marcas de posición",
+    "type_layer": "Capas"
+  }
+}

@@ -13,10 +13,10 @@ export class AppComponent {
   private geoService = inject(GeoService)
 
   readonly filters = [
-    {label: 'Zones', value: 1},
-    {label: 'Sites', value: 0},
-    {label: 'Placemarks', value: 4},
-    {label: 'Layers', value: 3},
+    {label: $localize`:@@type_zone:Zones`, value: 1},
+    {label: $localize`:@@type_sites:Sites`, value: 0},
+    {label: $localize`:@@type_placemark:Placemarks`, value: 4},
+    {label: $localize`:@@type_layer:Layers`, value: 3},
   ]
 
   filter = new FormControl(this.filters.map(filter => filter.value))

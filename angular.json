@@ -9,10 +9,24 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "es": {
+            "translation": "src/locale/messages.es.json",
+            "baseHref": ""
+          },
+          "ru": {
+            "translation": "src/locale/messages.ru.json",
+            "baseHref": ""
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/cityshob-widget",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -46,12 +60,19 @@
               "outputHashing": "all"
             },
             "development": {
+              "localize": false,
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "es": {
+              "localize": ["es"]
+            },
+            "ru": {
+              "localize": ["ru"]
             }
           },
           "defaultConfiguration": "production"
@@ -64,6 +85,12 @@
             },
             "development": {
               "browserTarget": "cityshob-widget:build:development"
+            },
+            "es": {
+              "browserTarget": "cityshob-widget:build:development,es"
+            },
+            "ru": {
+              "browserTarget": "cityshob-widget:build:development,ru"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,9 @@
+{
+  "locale": "en-US",
+  "translations": {
+    "type_zone": "Zones",
+    "type_sites": "Sites",
+    "type_placemark": "Placemarks",
+    "type_layer": "Layers"
+  }
+}

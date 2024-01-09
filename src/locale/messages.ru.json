@@ -1,0 +1,9 @@
+{
+  "locale": "ru",
+  "translations": {
+    "type_zone": "Зоны",
+    "type_sites": "Места",
+    "type_placemark": "Метки",
+    "type_layer": "Слои"
+  }
+}
