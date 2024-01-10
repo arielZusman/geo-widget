@@ -7,10 +7,14 @@ We can use the Tree component which enables filtering and drag & drop of the tre
 For resizing we can just use css `resize` property.
 I couldn't find the icons used in PrimeNG icon library, so for that will need to use something else like fontawesome
 
+***
+
 **Q:** In what format should data be received to display the result?
 
 **A:** The data should be an array of `TreeNode`.
 The main properties we need are `label` , `key` and `children`
+
+***
 
 **Q:** How to request data for displaying the result (format)?
 
@@ -26,17 +30,25 @@ The main properties we need are `label` , `key` and `children`
 
 3. Another thing is to consider is how the data is stored in the database. Is it stored as embed documents or using references.
 
+***
+
 **Q:** How to implement multilingual support for types and names, and what is the
 best way to do it?
 
 **A:** We need to install the `@angular/localize` package.
 Mark the text for translation and show language select menu.
+I provided a simple example for translation to Spanish and Russian.
+See `package.json` script to start the app in different languages
+
+***
 
 **Q:** What to do if the server cannot return the desired format and is forced to
 return bulky objects with fields in different writing styles?
 
 **A:** We need to implement some kind of adapter function which transforms ths server response.
 See `geoTreeNodeAdapter` function in utils.ts
+
+***
 
 ## Widget operation chart
 
