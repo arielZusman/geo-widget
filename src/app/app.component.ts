@@ -1,13 +1,19 @@
 import {Component, inject} from '@angular/core';
-import {FormControl} from "@angular/forms";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
 import {combineLatest, map, startWith, switchMap, tap} from "rxjs";
 import {GeoService} from "./geo.service";
 import {geoTreeNodeAdapter} from "./utils";
+import { AsyncPipe } from '@angular/common';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { InputTextModule } from 'primeng/inputtext';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: true,
+    imports: [MultiSelectModule, ReactiveFormsModule, InputTextModule, NgxJsonViewerModule, AsyncPipe]
 })
 export class AppComponent {
   private geoService = inject(GeoService)
