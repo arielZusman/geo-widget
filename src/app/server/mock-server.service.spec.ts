@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing'
 
-import { MockServerService } from './mock-server.service';
+import { MockServerService } from './mock-server.service'
 
 describe('MockServerService', () => {
-  let service: MockServerService;
+  let service: MockServerService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MockServerService);
-  });
+    TestBed.configureTestingModule({})
+    service = TestBed.inject(MockServerService)
+  })
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    expect(service).toBeTruthy()
+  })
+})

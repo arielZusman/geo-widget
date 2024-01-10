@@ -1,24 +1,22 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
-import {GeoObject} from "../models";
-import {geoObjectsResponse} from './db'
+import { Injectable } from '@angular/core'
+import { Observable, of } from 'rxjs'
+import { GeoObject } from '../models'
+import { geoObjectsResponse } from './db'
 
 export interface FindParams {
-  types?: number[];
-  search?: string;
-  id?: string;
+  types?: number[]
+  search?: string
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MockServerService {
-
-
-  find({types, search, id}: FindParams): Observable<GeoObject[]> {
+  find({ types, search }: FindParams): Observable<GeoObject[]> {
     const searchValue = search?.toLowerCase() || null
-    const filterByType = types?.length ?
-      geoObjectsResponse.filter(geoObject => types?.includes(geoObject.type)) : []
+    const filterByType = types?.length
+      ? geoObjectsResponse.filter(geoObject => types?.includes(geoObject.type))
+      : []
 
     const filterBySearch = searchValue ? filterByType.filter(geoObject => this.deepSearchByName(geoObject, searchValue)) : filterByType
 
@@ -27,7 +25,7 @@ export class MockServerService {
 
   deepSearchByName(geoObject: GeoObject, search: string): boolean {
     if (geoObject.name.toLowerCase().includes(search)) {
-      return true;
+      return true
     }
 
     if (geoObject.children.length > 0) {
@@ -37,5 +35,3 @@ export class MockServerService {
     return false
   }
 }
-
-
