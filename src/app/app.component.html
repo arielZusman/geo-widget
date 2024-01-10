@@ -1,12 +1,8 @@
 <div class="widget-form">
-  <p-multiSelect [options]="filters" [formControl]="filter" [showClear]="true"
+  <p-multiSelect [formControl]="filter" [options]="filters" [showClear]="true"
                  placeholder="Select a City"></p-multiSelect>
-
-
-  <input type="text" pInputText [formControl]="search"/>
+  <input [formControl]="search" pInputText type="text"/>
 </div>
-<!--<p-tree class="w-full md:w-30rem" [value]="result$ | async"></p-tree>-->
-<pre>
-<!--  {{ result$ | async | json }}-->
-  <ngx-json-viewer [json]="result$ | async "></ngx-json-viewer>
-</pre>
+<div>
+  <ngx-json-viewer [json]="result$ | async" [expanded]="false"></ngx-json-viewer>
+</div>

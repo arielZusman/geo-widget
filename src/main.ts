@@ -13,7 +13,7 @@ import { bootstrapApplication, BrowserModule } from '@angular/platform-browser'
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(BrowserModule, DropdownModule, ReactiveFormsModule, InputTextModule, MultiSelectModule, TreeModule, NgxJsonViewerModule),
+    importProvidersFrom(BrowserModule),
     provideAnimations(),
   ],
 })

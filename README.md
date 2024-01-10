@@ -35,5 +35,14 @@ Mark the text for translation and show language select menu.
 **Q:** What to do if the server cannot return the desired format and is forced to
 return bulky objects with fields in different writing styles?
 
-**A:** We need to implement some kind of adapter function which transforms ths server response
+**A:** We need to implement some kind of adapter function which transforms ths server response.
+See `geoTreeNodeAdapter` function in utils.ts
+
+## Widget operation chart
+
+flowchart TD
+A[filter input]
+B[search input]
+A & B --> |changes|C[fetch data]
+C --> |update|D[widget]
 
