@@ -40,9 +40,10 @@ See `geoTreeNodeAdapter` function in utils.ts
 
 ## Widget operation chart
 
+```mermaid
 flowchart TD
-A[filter input]
-B[search input]
-A & B --> |changes|C[fetch data]
-C --> |update|D[widget]
-
+  A[filter input]
+  B[search input]
+  A & B -->|changes| C[fetch data]
+  C -->|update| D[widget]
+```

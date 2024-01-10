@@ -13,23 +13,23 @@ export interface FindParams {
 })
 export class MockServerService {
   find({ types, search }: FindParams): Observable<GeoObject[]> {
-    const searchValue = search?.toLowerCase() || null
     const filterByType = types?.length
       ? geoObjectsResponse.filter(geoObject => types?.includes(geoObject.type))
       : []
 
-    const filterBySearch = searchValue ? filterByType.filter(geoObject => this.deepSearchByName(geoObject, searchValue)) : filterByType
+    const filterBySearch = search ? filterByType.filter(geoObject => this.deepSearchByKey(geoObject, search)) : filterByType
 
     return of(filterBySearch)
   }
 
-  deepSearchByName(geoObject: GeoObject, search: string): boolean {
-    if (geoObject.name.toLowerCase().includes(search)) {
+  deepSearchByKey(geoObject: GeoObject, search: string, key: keyof GeoObject = 'name'): boolean {
+    search = search.toLowerCase()
+    if (geoObject[key]?.toString().toLowerCase().includes(search)) {
       return true
     }
 
     if (geoObject.children.length > 0) {
-      return geoObject.children.some(child => this.deepSearchByName(child, search))
+      return geoObject.children.some(child => this.deepSearchByKey(child, search))
     }
 
     return false
