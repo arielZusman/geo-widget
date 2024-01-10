@@ -5,7 +5,8 @@
 
   <input type="text" pInputText [formControl]="search"/>
 </div>
-<p-tree class="w-full md:w-30rem" [value]="result$ | async"></p-tree>
+<!--<p-tree class="w-full md:w-30rem" [value]="result$ | async"></p-tree>-->
 <pre>
 <!--  {{ result$ | async | json }}-->
+  <ngx-json-viewer [json]="result$ | async "></ngx-json-viewer>
 </pre>
